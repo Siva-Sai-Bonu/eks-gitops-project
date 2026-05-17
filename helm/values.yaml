@@ -1,0 +1,24 @@
+replicaCount: 2
+image:
+  repository: 688436101433.dkr.ecr.us-east-1.amazonaws.com/eks-gitops-app
+  tag: "latest"
+  pullPolicy: IfNotPresent
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 3000
+ingress:
+  enabled: false
+resources:
+  requests:
+    cpu: "100m"
+    memory: "128Mi"
+  limits:
+    cpu: "500m"
+    memory: "256Mi"
+autoscaling:
+  enabled: false
+serviceAccount:
+  create: true
+  name: "eks-gitops-app-sa"
+  annotations: {}
