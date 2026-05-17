@@ -1,14 +1,24 @@
 replicaCount: 2
+
 image:
   repository: 688436101433.dkr.ecr.us-east-1.amazonaws.com/eks-gitops-app
-  tag: "7274437a54e597db95f11726da0fd50fec813e6a"
+  tag: "latest"
   pullPolicy: IfNotPresent
+
 service:
   type: ClusterIP
   port: 80
   targetPort: 3000
+
 ingress:
-  enabled: false
+  enabled: true
+  className: "alb"
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+  host: ""
+
 resources:
   requests:
     cpu: "100m"
@@ -16,8 +26,10 @@ resources:
   limits:
     cpu: "500m"
     memory: "256Mi"
+
 autoscaling:
   enabled: false
+
 serviceAccount:
   create: true
   name: "eks-gitops-app-sa"
