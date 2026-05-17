@@ -3,6 +3,8 @@ name: CI Pipeline
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'helm/values.yaml'   # ignore bot commits to values.yaml
 
 env:
   AWS_REGION: us-east-1
