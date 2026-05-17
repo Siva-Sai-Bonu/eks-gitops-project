@@ -1,7 +1,7 @@
 replicaCount: 2
 image:
   repository: 688436101433.dkr.ecr.us-east-1.amazonaws.com/eks-gitops-app
-  tag: "0c7626b95e78785333e6dfc4185518ca06b65b46"
+  tag: "e5f92939c364e0ce33cb6aa4d98f1ead11c2d782"
   pullPolicy: IfNotPresent
 service:
   type: ClusterIP
